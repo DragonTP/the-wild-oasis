@@ -12,7 +12,7 @@ export const useDeleteGuest = () => {
         queryKey: ['guests']
       })
     },
-    onError: err => toast.error(err.message)
+    onError: () => toast.error('You need to delete booking before deleting guest')
   })
   return { isDeleting, deleteGuest }
 }

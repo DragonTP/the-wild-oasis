@@ -69,6 +69,7 @@ function FormFeedback({ doneForm }) {
       cabinId: booking.cabinId,
       bookingId: booking.id,
       rating,
+      isRecommend: data.isRecommend && data.isRecommend === 'yes'
     }
     addFeedback(newFeedback, {
       onSuccess: () => doneForm()
