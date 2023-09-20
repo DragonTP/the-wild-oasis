@@ -31,22 +31,22 @@ function CabinTable() {
 
   switch (sortValue) {
     case 'name-desc':
-      sortedCabins = filteredCabins.toSorted((a, b) => -a.name.localeCompare(b.name));
+      sortedCabins = filteredCabins.sort((a, b) => -a.name.localeCompare(b.name));
       break;
     case 'regularPrice-asc':
-      sortedCabins = filteredCabins.toSorted((a, b) => a.regularPrice - b.regularPrice);
+      sortedCabins = filteredCabins.sort((a, b) => a.regularPrice - b.regularPrice);
       break;
     case 'regularPrice-desc':
-      sortedCabins = filteredCabins.toSorted((a, b) => b.regularPrice - a.regularPrice);
+      sortedCabins = filteredCabins.sort((a, b) => b.regularPrice - a.regularPrice);
       break;
     case 'maxCapacity-asc':
-      sortedCabins = filteredCabins.toSorted((a, b) => a.maxCapacity - b.maxCapacity);
+      sortedCabins = filteredCabins.sort((a, b) => a.maxCapacity - b.maxCapacity);
       break;
     case 'maxCapacity-desc':
-      sortedCabins = filteredCabins.toSorted((a, b) => b.maxCapacity - a.maxCapacity);
+      sortedCabins = filteredCabins.sort((a, b) => b.maxCapacity - a.maxCapacity);
       break;
     default:
-      sortedCabins = filteredCabins.toSorted((a, b) => a.name.localeCompare(b.name));
+      sortedCabins = filteredCabins.sort((a, b) => a.name.localeCompare(b.name));
   }
 
   return (

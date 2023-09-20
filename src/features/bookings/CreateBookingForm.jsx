@@ -63,7 +63,7 @@ function CreateBookingForm({ onCloseModal }) {
     value: guest.id
   }));
   const cabin = cabins.find(cabin => cabin.id === selectedCabin);
-  const sortedCabin = cabins.toSorted((a, b) => a.name.localeCompare(b.name));
+  const sortedCabin = cabins.slice().sort((a, b) => a.name.localeCompare(b.name));
   const price = (cabin?.regularPrice - cabin?.discount) * numNights || 0;
   const breakfastPrice = hasBreakfast ? settings.breakfastPrice * numGuests * numNights || 0 : 0;
   const totalPrice = price + breakfastPrice;
