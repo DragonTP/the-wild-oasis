@@ -10,7 +10,7 @@ export const useDeleteBooking = () => {
       toast.success('Booking has been deleted');
       queryClient.invalidateQueries({ queryKey: ['bookings'], type: 'active' });
     },
-    onError: () => toast.error('You need to delete booking before deleting cabin')
+    onError: () => toast.error('There was an error while deleting booking')
   })
   return { isDeletingBooking, deleteBooking }
 }

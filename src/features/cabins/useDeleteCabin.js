@@ -14,9 +14,7 @@ export const useDeleteCabin = () => {
         queryKey: ['cabins']
       });
     },
-    onError(err) {
-      toast.error(err.message);
-    }
+    onError: () => toast.error('You need to delete booking before deleting cabin')
   })
 
   return { deleteCabin, deleteStatus }
