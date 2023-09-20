@@ -51,13 +51,14 @@ function CabinTable() {
 
   return (
     <Menus>
-      <Table columns='0.5fr 1.6fr 2.2fr 1.3fr 1.2fr 3.2rem' responsive={{
-        columns: '4.8rem 12rem 12rem 12rem 12rem 3.2rem',
-        breakpoint: 645,
+      <Table columns='0.5fr 1.8fr 6rem 2fr 1.3fr 1.2fr 3.2rem' responsive={{
+        columns: '4.8rem 12rem 6rem 12rem 12rem 12rem 3.2rem',
+        breakpoint: 1054,
       }}>
         <Table.Header>
           <div></div>
           <div>Cabin</div>
+          <div>Rating</div>
           <div>Capacity</div>
           <div>Price</div>
           <div>Discount</div>

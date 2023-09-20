@@ -3,7 +3,7 @@ import { formatCurrency } from '../../utils/helpers'
 import SpinnerMini from "../../ui/SpinnerMini";
 import CreateCabinForm from "./CreateCabinForm";
 import { useDeleteCabin } from "./useDeleteCabin";
-import { HiPencil, HiSquare2Stack, HiTrash } from "react-icons/hi2";
+import { HiPencil, HiStar, HiSquare2Stack, HiTrash } from "react-icons/hi2";
 import { useCreateCabin } from "./useCreateCabin";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from '../../ui/ConfirmDelete';
@@ -19,6 +19,18 @@ const Img = styled.img`
   object-position: center;
   transform: scale(1.5) translateX(-7px);
 `;
+
+const StarRating = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-star);
+  font-size: 16px;
+
+  & span {
+    font-weight: 500;
+  }
+`
 
 const Cabin = styled.div`
   font-size: 1.6rem;
@@ -72,6 +84,10 @@ function CabinRow({ cabin }) {
     <Table.Row>
       <Img src={cabin.image} alt='' />
       <Cabin>{cabin.name}</Cabin>
+      <StarRating>
+        <span>{cabin.rating}</span>
+        <HiStar />
+      </StarRating>
       <div>Fits up to {cabin.maxCapacity} guests</div>
       <Price>{formatCurrency(cabin.regularPrice)}</Price>
       {cabin.discount ? <Discount>{formatCurrency(cabin.discount)}</Discount> :

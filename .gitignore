@@ -23,4 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 public/cabins
+styles/index.css
 templates
