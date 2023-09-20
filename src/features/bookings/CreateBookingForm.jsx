@@ -51,21 +51,23 @@ function CreateBookingForm({ onCloseModal }) {
   const [endDate, setEndDate] = useState(addDays(new Date(), 1));
   const numNights = differenceInDays(endDate, startDate);
 
-  const guestsOptions = guests.map(guest => ({
-    label: guest.fullName,
-    value: guest.id
-  }));
-  const cabin = cabins?.find(cabin => cabin.id === selectedCabin);
-  const price = (cabin?.regularPrice - cabin?.discount) * numNights || 0;
-  const breakfastPrice = hasBreakfast ? settings?.breakfastPrice * numGuests * numNights || 0 : 0;
-  const totalPrice = price + breakfastPrice;
-
   if (isLoading || isLoadingSettings || isLoadingGuests || isLoadingBookings)
     return (
       <SpinnerContainer>
         <Spinner />
       </SpinnerContainer>
     )
+
+  const guestsOptions = guests.map(guest => ({
+    label: guest.fullName,
+    value: guest.id
+  }));
+  const cabin = cabins.find(cabin => cabin.id === selectedCabin);
+  const sortedCabin = cabins.toSorted((a, b) => a.name.localeCompare(b.name));
+  const price = (cabin?.regularPrice - cabin?.discount) * numNights || 0;
+  const breakfastPrice = hasBreakfast ? settings.breakfastPrice * numGuests * numNights || 0 : 0;
+  const totalPrice = price + breakfastPrice;
+
   const onSubmit = data => {
     const newBooking = {
       ...data,
@@ -154,8 +156,8 @@ function CreateBookingForm({ onCloseModal }) {
       </FormRow>
 
       <FormRowVertical label='Cabin' error={errors.cabinId?.message}>
-        <ImageRadio datas={cabins} onInput={e => setSelectedCabin(+e.target.value)} {...register('cabinId', {
-          required: 'This field is required'
+        <ImageRadio datas={sortedCabin} onInput={e => setSelectedCabin(+e.target.value)} {...register('cabinId', {
+          required: 'You need to choose a cabin'
         })} />
       </FormRowVertical>
 
